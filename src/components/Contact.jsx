@@ -43,19 +43,22 @@ Message: ${data.message}`;
 
           <h3>Quick Enquiry</h3>
 
-          <input
-            type="text"
-            name="name"
-            placeholder="Your Name"
-            onChange={handleChange}
-          />
+         <input
+  type="text"
+  name="name"
+  placeholder="Your Name"
+  value={data.name}
+  onChange={handleChange}
+  autoComplete="off"
+/>
 
-          <textarea
-            name="message"
-            placeholder="Your Message..."
-            rows="5"
-            onChange={handleChange}
-          ></textarea>
+<textarea
+  name="message"
+  placeholder="Your Message..."
+  rows="5"
+  value={data.message}
+  onChange={handleChange}
+></textarea>
 
           <button onClick={sendWhatsApp}>Send Enquiry</button>
 

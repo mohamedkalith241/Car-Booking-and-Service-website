@@ -24,24 +24,7 @@ function Booking(){
     setForm({...form,[e.target.name]:e.target.value});
   };
 
-  const sendWhatsApp=()=>{
 
-    const msg =
-`🚗 MK Motors Service Booking
-
-Customer: ${form.name}
-Phone: ${form.phone}
-Car: ${form.car}
-
-Service: ${form.service}
-Estimated Price: ${prices[form.service]}
-
-Date: ${form.date}
-Time Slot: ${form.time}`;
-
-    const url=`https://wa.me/919876543210?text=${encodeURIComponent(msg)}`;
-    window.open(url,"_blank");
-  };
 
   return(
     <section id="booking" className="booking">
@@ -64,33 +47,67 @@ Time Slot: ${form.time}`;
         {/* right */}
         <div className="booking-form">
 
-          <input type="text" name="name" placeholder="Customer Name" onChange={handleChange}/>
-          <input type="tel" name="phone" placeholder="Phone Number" onChange={handleChange}/>
-          <input type="text" name="car" placeholder="Car Model" onChange={handleChange}/>
+         <input 
+  type="text"
+  name="name"
+  placeholder="Customer Name"
+  value={form.name}
+  onChange={handleChange}
+    autoComplete="off"
+/>
 
-          <select name="service" onChange={handleChange}>
-            <option>General Service</option>
-            <option>Oil Change</option>
-            <option>Full Service</option>
-            <option>AC Repair</option>
-            <option>Denting & Painting</option>
+<input 
+  type="tel"
+  name="phone"
+  placeholder="Phone Number"
+  value={form.phone}
+  onChange={handleChange}
+    autoComplete="off"
+/>
+
+<input 
+  type="text"
+  name="car"
+  placeholder="Car Model"
+  value={form.car}
+  onChange={handleChange}
+    autoComplete="off"
+/>
+
+
+<select name="service"value={form.service}onChange={handleChange}>
+            <option style={{background:"#ff4d00"}}>General Service</option>
+            <option style={{background:"#ff4d00"}}>Oil Change</option>
+            <option style={{background:"#ff4d00"}}>Full Service</option>
+            <option style={{background:"#ff4d00"}}>AC Repair</option>
+            <option style={{background:"#ff4d00"}}>Denting & Painting</option>
           </select>
 
           <div className="price">
             Estimated Price: {prices[form.service]}
           </div>
 
-          <input type="date" name="date" onChange={handleChange}/>
+         <input 
+  type="date"
+  name="date"
+  value={form.date}
+  onChange={handleChange}
+/>
 
-          <select name="time" onChange={handleChange}>
-            <option>10:00 AM</option>
-            <option>12:00 PM</option>
-            <option>2:00 PM</option>
-            <option>4:00 PM</option>
-            <option>6:00 PM</option>
+<select 
+  name="time"
+  value={form.time}
+  onChange={handleChange}
+>
+
+            <option style={{background:"#ff4d00"}}> 10:00 AM</option>
+            <option  style={{background:"#ff4d00"}}>12:00 PM</option>
+            <option  style={{background:"#ff4d00"}}>2:00 PM</option>
+            <option  style={{background:"#ff4d00"}}>4:00 PM</option>
+            <option  style={{background:"#ff4d00"}}>6:00 PM</option>
           </select>
 
-          <button onClick={sendWhatsApp}>Confirm Booking</button>
+          <button>Confirm Booking</button>
 
         </div>
 

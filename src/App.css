@@ -31,7 +31,7 @@ html{
 /* ICON */
 .logo-icon{
   font-size:32px;
-  color:#ff3c3c;
+  color:#ff4d00;
   animation:carMove 2s infinite alternate;
 }
 
@@ -50,15 +50,31 @@ html{
   gap:30px;
 }
 
-.nav-links a{
-  text-decoration:none;
-  color:white;
-  font-size:17px;
-  transition:0.3s;
+.nav-links a {
+  text-decoration: none;
+  color: white;
+  margin: 0 20px;
+  position: relative;
+  transition: 0.3s;
+}
+
+.nav-links a.active {
+  color: #ff4d00;
+}
+
+.nav-links a.active::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: #ff4d00;
+  border-radius: 5px;
 }
 
 .nav-links a:hover{
-  color:#ff3c3c;
+  color:#ff4d00;
 }
 
 /* CAR ICON ANIMATION */
@@ -234,43 +250,70 @@ html{
 .cars{
   background:#0e141b;
   text-align:center;
+  padding:80px 0;
 }
 
 .cars h2{
   font-size:40px;
-  margin-bottom:40px;
+  margin-bottom:50px;
+  color:#ff4d00;
 }
 
-.car-list{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+/* Carousel Layout */
+.carousel-container{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+}
+
+.carousel-wrapper{
+  width:1200px; /* show 3 cards */
+  overflow:hidden;
+}
+
+.carousel-track{
+  display:flex;
   gap:30px;
+  transition:transform .6s ease;
 }
 
+/* Card Design */
 .car-card{
+  margin-top: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+  min-width:360px;
   background:#151c24;
   border-radius:18px;
   overflow:hidden;
   transition:.4s;
+  color:white;
 }
 
 .car-card img{
   width:100%;
-  height:200px;
+  height:220px;
   object-fit:cover;
 }
 
 .car-card h3{
-  margin-top:15px;
+  margin-top:20px;
 }
 
-.car-card p{
+.variant{
   color:#ff4d00;
   margin:10px 0;
 }
 
+.price{
+  color:#ff4d00;
+  font-weight:bold;
+  font-size:18px;
+}
+
 .car-card button{
-  margin-bottom:20px;
+  margin:20px 0 25px 0;
   padding:10px 25px;
   border:none;
   background:#ff4d00;
@@ -281,7 +324,25 @@ html{
 
 .car-card:hover{
   transform:translateY(-10px) scale(1.02);
-  box-shadow:0 0 30px rgba(255,77,0,0.5);
+  box-shadow:0 0 30px rgba(157, 92, 248, 0.5);
+}
+
+/* Arrows */
+.arrow{
+  background:#ff4d00;
+  border:none;
+  color:white;
+  font-size:22px;
+  padding:12px 16px;
+  border-radius:50%;
+  cursor:pointer;
+  margin:0 20px;
+  transition:.3s;
+}
+
+.arrow:hover{
+  background:white;
+  color:#ff4d00;
 }
 .whatsapp{
   position:fixed;
@@ -301,7 +362,7 @@ html{
 }
 .booking{
   background:#0e141b;
-  padding:90px 8%;
+  padding:80px 8%;
 }
 
 .booking h2{
@@ -343,13 +404,36 @@ html{
 }
 
 .booking-form input,
-.booking-form select{
-  padding:14px;
-  border-radius:10px;
-  border:none;
-  outline:none;
-  font-size:16px;
+.booking-form select {
+  width: 100%;
+  padding: 14px;
+  border-radius: 8px;
+  border: none;
+  font-size: 16px;
+  background: #ffffff;
+  color: #111;   /* 🔥 Makes typed text dark and visible */
 }
+.booking-form select {
+  padding-right: 40px;
+}
+
+.booking-form select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding-right: 55px;
+  background-image: url("data:image/svg+xml;utf8,<svg fill='%23111' height='20' viewBox='0 0 24 24' width='20' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+  background-size: 18px;
+}
+.booking-form input::placeholder {
+  color: #777;
+}
+
+.booking-form input:hover, .booking-form select:hover { 
+  box-shadow: 0 0 0 2px #ff6a00; }
+  .booking-form input, .booking-form select { transition: 0.3s; }
 
 .price{
   color:#ff7b00;
@@ -421,12 +505,20 @@ html{
 }
 
 .contact-form input,
-.contact-form textarea{
-  padding:14px;
-  border-radius:10px;
-  border:none;
-  outline:none;
+.contact-form textarea {
+  
+  padding: 14px;
+  border-radius: 10px;
+  border: none;
+  background: #ffffff;
+  color: #111;
+  transition: 0.3s;
   font-size:16px;
+}
+
+.contact-form input:hover,
+.contact-form textarea:hover {
+  box-shadow: 0 0 0 2px #ff6a00;
 }
 
 .contact-form button{
